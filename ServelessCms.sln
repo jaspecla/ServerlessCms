@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30615.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServelessCms.Functions", "ServelessCms.Functions\ServelessCms.Functions.csproj", "{426ACB7B-0CED-463A-8348-41B46A3B6B7D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerlessCms.Data", "ServerlessCms.Data\ServerlessCms.Data.csproj", "{BB0B91E3-920F-463B-8A2E-DD343121C9F5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{426ACB7B-0CED-463A-8348-41B46A3B6B7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{426ACB7B-0CED-463A-8348-41B46A3B6B7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{426ACB7B-0CED-463A-8348-41B46A3B6B7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{426ACB7B-0CED-463A-8348-41B46A3B6B7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB0B91E3-920F-463B-8A2E-DD343121C9F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB0B91E3-920F-463B-8A2E-DD343121C9F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB0B91E3-920F-463B-8A2E-DD343121C9F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB0B91E3-920F-463B-8A2E-DD343121C9F5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3F345F3F-3207-4682-AF12-E02D001E9BFF}
+	EndGlobalSection
+EndGlobal
