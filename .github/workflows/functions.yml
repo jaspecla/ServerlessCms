@@ -24,7 +24,7 @@ jobs:
     - name: Test
       run: dotnet test --no-restore --verbosity normal
     - name: Publish
-      run: dotnet publish -o cms_functions
+      run: dotnet publish --configuration Release -o cms_functions
       
     - name: Azure Login
       uses: Azure/login@v1
@@ -34,7 +34,5 @@ jobs:
     - name: Azure Functions Action
       uses: Azure/functions-action@v1.1.5
       with:         
-        # Name of the Azure Function App
         app-name: serverless-cms-dev
-        # Path to package or folder. *.zip or a folder to deploy
-        package: ./cms_functions
+        package: './cms_functions'
