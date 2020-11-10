@@ -1,0 +1,40 @@
+name: Build and Deploy Azure Functions
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.301
+    - name: Install dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --configuration Release --no-restore
+    - name: Test
+      run: dotnet test --no-restore --verbosity normal
+    - name: Publish
+      run: dotnet publish -o cms_functions
+      
+    - name: Azure Login
+      uses: Azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+      
+    - name: Azure Functions Action
+      uses: Azure/functions-action@v1.1.5
+      with:         
+        # Name of the Azure Function App
+        app-name: serverless-cms-dev
+        # Path to package or folder. *.zip or a folder to deploy
+        package: ./cms_functions
