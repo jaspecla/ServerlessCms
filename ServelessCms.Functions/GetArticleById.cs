@@ -9,41 +9,48 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using ServerlessCms.Data;
 using System.Web.Http;
-using System.Collections.Generic;
 
 namespace ServelessCms.Functions
 {
-  public class GetArticles
+  public class GetArticleById
   {
     public readonly CosmosCmsDb CmsDb;
 
-    public GetArticles(CosmosCmsDb db)
+    public GetArticleById(CosmosCmsDb db)
     {
       CmsDb = db;
     }
 
-    [FunctionName("GetArticles")]
+    [FunctionName("GetArticleById")]
     public async Task<IActionResult> Run(
         [HttpTrigger(AuthorizationLevel.Function, "get", Route = null)] HttpRequest req,
         ILogger log)
     {
-      log.LogInformation("Getting all articles.");
+      string id = req.Query["id"];
 
-      IEnumerable<Article> articleCollection;
+      if (string.IsNullOrEmpty(id))
+      {
+        log.LogError("No id provided to GetArticleById Function.");
+        return new BadRequestObjectResult("GetArticleById requires an id.");
+      }
+
+      log.LogInformation($"Getting articles with id {id}");
+
+      Article article;
 
       try
       {
-        articleCollection = await CmsDb.GetArticlesAsync("SELECT * FROM c");
+        article = await CmsDb.GetArticleAsync(id);
       }
       catch (Exception ex)
       {
-        log.LogError($"Error loading articles: {ex.Message}");
+        log.LogError($"Error loading article with id {id}: {ex.Message}");
         return new InternalServerErrorResult();
       }
 
-      log.LogInformation("Successfully retrieved all articles.");
+      log.LogInformation($"Successfully retrieved article with id: {id}");
 
-      return new OkObjectResult(articleCollection);
+      return new OkObjectResult(article);
     }
   }
 }
