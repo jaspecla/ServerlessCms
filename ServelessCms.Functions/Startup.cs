@@ -13,8 +13,6 @@ namespace ServerlessCms.Functions
     public override void Configure(IFunctionsHostBuilder builder)
     {
 
-
-
       builder.Services.AddSingleton<CosmosCmsDb>((s) => {
         var cosmosDbConnectionString = Environment.GetEnvironmentVariable("CosmosDbConnectionString", EnvironmentVariableTarget.Process);
 
