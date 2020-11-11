@@ -15,10 +15,18 @@ using System.Text.Json;
 
 namespace ServelessCms.Functions
 {
-  public static class CreateArticle
+  
+  public class CreateArticle
   {
+    private readonly CosmosCmsDb CmsDb;
+
+    public CreateArticle(CosmosCmsDb db)
+    {
+      CmsDb = db;
+    }
+
     [FunctionName("CreateArticle")]
-    public static async Task<IActionResult> Run(
+    public async Task<IActionResult> Run(
         [HttpTrigger(AuthorizationLevel.Function, "post", Route = null)] HttpRequest req,
         ILogger log)
     {
@@ -36,17 +44,9 @@ namespace ServelessCms.Functions
       newArticle.Id = Guid.NewGuid().ToString();
       newArticle.CreationDate = DateTime.Now;
 
-      var cosmosDbConnectionString = System.Environment.GetEnvironmentVariable("CosmosDbConnectionString", EnvironmentVariableTarget.Process);
-
-      var clientOptions = new CosmosClientOptions();
-      clientOptions.SerializerOptions = new CosmosSerializationOptions() { PropertyNamingPolicy = CosmosPropertyNamingPolicy.CamelCase };
-      var dbClient = new CosmosClient(cosmosDbConnectionString, clientOptions);
-
-      var db = new CosmosCmsDb(dbClient, "CMS", "Articles");
-
       try
       {
-        await db.AddArticleAsync(newArticle);
+        await CmsDb.AddArticleAsync(newArticle);
       }
       catch (Exception ex)
       {
@@ -54,6 +54,7 @@ namespace ServelessCms.Functions
         return new InternalServerErrorResult();
       }
 
+      log.LogInformation($"Successfully created article with id {newArticle.Id}");
       return new OkObjectResult(newArticle);
     }
   }
