@@ -20,7 +20,7 @@ on:
 jobs:
   build:
     env:
-      FUNCTIONS_PROJECT_PATH: '.\ServerlessCms.Functions\ServerlessCms.Functions.csproj'
+      FUNCTIONS_PROJECT_PATH: '.\ServerlessCms\ServerlessCms.Functions\ServerlessCms.Functions.csproj'
 
     runs-on: windows-latest
 
