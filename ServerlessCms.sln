@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30615.102
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServelessCms.Functions", "ServelessCms.Functions\ServelessCms.Functions.csproj", "{426ACB7B-0CED-463A-8348-41B46A3B6B7D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerlessCms.Functions", "ServerlessCms.Functions\ServerlessCms.Functions.csproj", "{426ACB7B-0CED-463A-8348-41B46A3B6B7D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerlessCms.Data", "ServerlessCms.Data\ServerlessCms.Data.csproj", "{BB0B91E3-920F-463B-8A2E-DD343121C9F5}"
 EndProject
@@ -15,7 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Deployment", "Deployment", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerlessCms.DTO", "ServerlessCms.DTO\ServerlessCms.DTO.csproj", "{11842B87-9014-4829-91C9-4C6480852786}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerlessCms.EditorApp", "ServerlessCms.EditorApp\ServerlessCms.EditorApp.csproj", "{EDFDD198-AB00-439D-8D6A-D4D72E5C7844}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerlessCms.EditorApp", "ServerlessCms.EditorApp\ServerlessCms.EditorApp.csproj", "{EDFDD198-AB00-439D-8D6A-D4D72E5C7844}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
