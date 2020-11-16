@@ -31,7 +31,7 @@ jobs:
       with:
         dotnet-version: 3.1.301
     - name: Install dependencies
-      run: dotnet restore
+      run: dotnet restore $FUNCTIONS_PROJECT_PATH
     - name: Build
       run: dotnet build $FUNCTIONS_PROJECT_PATH --configuration Release --no-restore
     - name: Test
