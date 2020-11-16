@@ -31,13 +31,13 @@ jobs:
       with:
         dotnet-version: 3.1.301
     - name: Install dependencies
-      run: dotnet restore $FUNCTIONS_PROJECT_PATH
+      run: dotnet restore $Env:FUNCTIONS_PROJECT_PATH
     - name: Build
-      run: dotnet build $FUNCTIONS_PROJECT_PATH --configuration Release --no-restore
+      run: dotnet build $Env:FUNCTIONS_PROJECT_PATH --configuration Release --no-restore
     - name: Test
-      run: dotnet test $FUNCTIONS_PROJECT_PATH --no-restore --verbosity normal
+      run: dotnet test $Env:FUNCTIONS_PROJECT_PATH --no-restore --verbosity normal
     - name: Publish
-      run: dotnet publish $FUNCTIONS_PROJECT_PATH --configuration Release -o cms_functions
+      run: dotnet publish $Env:FUNCTIONS_PROJECT_PATH --configuration Release -o cms_functions
       
     - name: Azure Login
       uses: Azure/login@v1
