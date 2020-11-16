@@ -10,21 +10,22 @@ using Newtonsoft.Json;
 using ServerlessCms.Data;
 using System.Web.Http;
 using System.Collections.Generic;
+using ServerlessCms.DTO;
 
 namespace ServelessCms.Functions
 {
   public class GetArticles
   {
-    public readonly CosmosCmsDb CmsDb;
+    public readonly CosmosArticleDb CmsDb;
 
-    public GetArticles(CosmosCmsDb db)
+    public GetArticles(CosmosArticleDb db)
     {
       CmsDb = db;
     }
 
     [FunctionName("GetArticles")]
     public async Task<IActionResult> Run(
-        [HttpTrigger(AuthorizationLevel.Function, "get", Route = null)] HttpRequest req,
+        [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)] HttpRequest req,
         ILogger log)
     {
       log.LogInformation("Getting all articles.");

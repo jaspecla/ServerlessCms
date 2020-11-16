@@ -1,0 +1,15 @@
+﻿@page "/articles"
+
+<h3>Articles</h3>
+
+@if (ArticleCollection == null)
+{
+  <h1>Loading...</h1>
+}
+else
+{
+  foreach (var article in ArticleCollection)
+  {
+    <h1>@article.Title</h1>
+  }
+}

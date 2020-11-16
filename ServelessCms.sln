@@ -9,8 +9,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerlessCms.Data", "Serve
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Deployment", "Deployment", "{41C02CB1-A750-46AF-B14B-C6F3D97FD2C2}"
 	ProjectSection(SolutionItems) = preProject
+		.github\workflows\editor-app.yml = .github\workflows\editor-app.yml
 		.github\workflows\functions.yml = .github\workflows\functions.yml
 	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerlessCms.DTO", "ServerlessCms.DTO\ServerlessCms.DTO.csproj", "{11842B87-9014-4829-91C9-4C6480852786}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerlessCms.EditorApp", "ServerlessCms.EditorApp\ServerlessCms.EditorApp.csproj", "{EDFDD198-AB00-439D-8D6A-D4D72E5C7844}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,6 +31,14 @@ Global
 		{BB0B91E3-920F-463B-8A2E-DD343121C9F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB0B91E3-920F-463B-8A2E-DD343121C9F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB0B91E3-920F-463B-8A2E-DD343121C9F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11842B87-9014-4829-91C9-4C6480852786}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11842B87-9014-4829-91C9-4C6480852786}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11842B87-9014-4829-91C9-4C6480852786}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11842B87-9014-4829-91C9-4C6480852786}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDFDD198-AB00-439D-8D6A-D4D72E5C7844}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDFDD198-AB00-439D-8D6A-D4D72E5C7844}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDFDD198-AB00-439D-8D6A-D4D72E5C7844}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDFDD198-AB00-439D-8D6A-D4D72E5C7844}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

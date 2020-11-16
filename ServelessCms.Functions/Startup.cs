@@ -13,14 +13,14 @@ namespace ServerlessCms.Functions
     public override void Configure(IFunctionsHostBuilder builder)
     {
 
-      builder.Services.AddSingleton<CosmosCmsDb>((s) => {
+      builder.Services.AddSingleton<CosmosArticleDb>((s) => {
         var cosmosDbConnectionString = Environment.GetEnvironmentVariable("CosmosDbConnectionString", EnvironmentVariableTarget.Process);
 
         var clientOptions = new CosmosClientOptions();
         clientOptions.SerializerOptions = new CosmosSerializationOptions() { PropertyNamingPolicy = CosmosPropertyNamingPolicy.CamelCase };
         var dbClient = new CosmosClient(cosmosDbConnectionString, clientOptions);
 
-        var db = new CosmosCmsDb(dbClient, "CMS", "Articles");
+        var db = new CosmosArticleDb(dbClient, "CMS", "Articles");
 
         return db;
       });

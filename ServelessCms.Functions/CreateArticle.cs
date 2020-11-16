@@ -12,22 +12,23 @@ using Microsoft.Azure.Cosmos;
 using System.Web.Http;
 using System.Runtime.InteropServices;
 using System.Text.Json;
+using ServerlessCms.DTO;
 
 namespace ServelessCms.Functions
 {
   
   public class CreateArticle
   {
-    private readonly CosmosCmsDb CmsDb;
+    private readonly CosmosArticleDb CmsDb;
 
-    public CreateArticle(CosmosCmsDb db)
+    public CreateArticle(CosmosArticleDb db)
     {
       CmsDb = db;
     }
 
     [FunctionName("CreateArticle")]
     public async Task<IActionResult> Run(
-        [HttpTrigger(AuthorizationLevel.Function, "post", Route = null)] HttpRequest req,
+        [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = null)] HttpRequest req,
         ILogger log)
     {
       string requestBody = await new StreamReader(req.Body).ReadToEndAsync();

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ServerlessCms.Data
+namespace ServerlessCms.DTO
 {
   public class Article
   {

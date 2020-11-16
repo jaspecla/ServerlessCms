@@ -9,21 +9,22 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using ServerlessCms.Data;
 using System.Web.Http;
+using ServerlessCms.DTO;
 
 namespace ServelessCms.Functions
 {
   public class GetArticleById
   {
-    public readonly CosmosCmsDb CmsDb;
+    public readonly CosmosArticleDb CmsDb;
 
-    public GetArticleById(CosmosCmsDb db)
+    public GetArticleById(CosmosArticleDb db)
     {
       CmsDb = db;
     }
 
     [FunctionName("GetArticleById")]
     public async Task<IActionResult> Run(
-        [HttpTrigger(AuthorizationLevel.Function, "get", Route = null)] HttpRequest req,
+        [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)] HttpRequest req,
         ILogger log)
     {
       string id = req.Query["id"];

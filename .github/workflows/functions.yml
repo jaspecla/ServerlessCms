@@ -1,10 +1,21 @@
-name: Build and Deploy Azure Functions
+name: Build and Deploy CMS Azure Functions
 
 on:
   push:
     branches: [ master ]
+    paths:
+      - 'ServerlessCms.DTO/**'
+      - 'ServerlessCms.Functions/**'
+      - 'ServerlessCms.Data/**'
+      - '.github/workflows/functions.yml'
+ 
   pull_request:
     branches: [ master ]
+    paths:
+      - 'ServerlessCms.DTO/**'
+      - 'ServerlessCms.Functions/**'
+      - 'ServerlessCms.Data/**'
+      - '.github/workflows/functions.yml'
 
 jobs:
   build:

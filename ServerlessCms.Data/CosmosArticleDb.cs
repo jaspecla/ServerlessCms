@@ -5,12 +5,13 @@
   using System.Threading.Tasks;
   using Microsoft.Azure.Cosmos;
   using Microsoft.Azure.Cosmos.Fluent;
+  using ServerlessCms.DTO;
 
-  public class CosmosCmsDb : ICmsDb
+  public class CosmosArticleDb
   {
     private Container _container;
 
-    public CosmosCmsDb(
+    public CosmosArticleDb(
         CosmosClient dbClient,
         string databaseName,
         string containerName)
