@@ -12,6 +12,8 @@ namespace ServerlessCms.EditorApp.Pages
   {
     [Inject]
     protected ArticleService ArticleService { get; set; }
+    [Inject]
+    protected NavigationManager NavigationManager { get; set; }
 
     public Article Article { get; set; } = new Article();
 
@@ -23,5 +25,21 @@ namespace ServerlessCms.EditorApp.Pages
       return base.OnInitializedAsync();
     }
 
+    public async Task OnSaveArticleClicked()
+    {
+      if (string.IsNullOrEmpty(Article.Id))
+      {
+        Article.Id = Guid.NewGuid().ToString();
+      }
+
+      if (Article.CreationDate == DateTime.MinValue)
+      {
+        Article.CreationDate = DateTime.Now;
+      }
+
+      await ArticleService.CreateArticle(Article);
+
+      NavigationManager.NavigateTo("articles", forceLoad: false);
+    }
   }
 }
