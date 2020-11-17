@@ -44,6 +44,7 @@ namespace ServelessCms.Functions
 
       newArticle.Id = Guid.NewGuid().ToString();
       newArticle.CreationDate = DateTime.Now;
+      newArticle.ModificationDate = DateTime.Now;
 
       try
       {

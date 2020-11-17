@@ -37,12 +37,14 @@ namespace ServerlessCms.EditorApp.Pages
         Article.Id = Guid.NewGuid().ToString();
       }
 
-      if (Article.CreationDate == DateTime.MinValue)
+      if (string.IsNullOrEmpty(Id))
       {
-        Article.CreationDate = DateTime.Now;
+        await ArticleService.CreateArticle(Article);
       }
-
-      await ArticleService.CreateArticle(Article);
+      else
+      {
+        await ArticleService.UpdateArticle(Article);
+      }
 
       NavigationManager.NavigateTo("articles");
     }
