@@ -34,6 +34,14 @@ namespace ServerlessCms.EditorApp.Services
       return articles;
     }
 
+    public async Task<Article> GetArticleById(string id)
+    {
+      var uri = $"{_configuration["articleBaseUrl"]}api/GetArticleById?id={id}";
+      var article = await _httpClient.GetFromJsonAsync<Article>(uri);
+
+      return article;
+    }
+
     public async Task CreateArticle(Article article)
     {
       var uri = $"{_configuration["articleBaseUrl"]}api/CreateArticle";

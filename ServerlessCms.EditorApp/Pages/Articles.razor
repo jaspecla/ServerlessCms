@@ -12,6 +12,6 @@ else
 {
   foreach (var article in ArticleCollection)
   {
-    <h1>@article.Title</h1>
+    <h3>@article.Title</h3> <button type="button" @onclick="() => { OnEditButtonClick(article.Id); }" class="btn-primary">Edit</button>
   }
 }

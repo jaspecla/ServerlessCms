@@ -1,7 +1,7 @@
 ﻿@page "/newarticle"
 @page "/editarticle/{id}"
 
-<h3>NewEditArticle</h3>
+<h3>@PageTitle</h3>
 
 <EditForm Model="@Article">
   <label for="title" class="col-sm-2 col-form-label">
@@ -30,4 +30,4 @@
   </div>
 </EditForm>
 <button type="submit" class="btn btn-primary" @onclick="OnSaveArticleClicked">Save</button>
-<button type="button" class="btn btn-warning">Discard</button>
+<button type="button" class="btn btn-warning" @onclick="OnDiscardClicked">Discard</button>

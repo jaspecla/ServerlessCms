@@ -15,14 +15,19 @@ namespace ServerlessCms.EditorApp.Pages
     [Inject]
     protected NavigationManager NavigationManager { get; set; }
 
+    public string PageTitle { get; set; } = "New Article";
     public Article Article { get; set; } = new Article();
 
     [Parameter]
     public string Id { get; set; }
 
-    protected override Task OnInitializedAsync()
+    protected override async Task OnInitializedAsync()
     {
-      return base.OnInitializedAsync();
+      if (!string.IsNullOrEmpty(Id))
+      {
+        Article = await ArticleService.GetArticleById(Id);
+        PageTitle = "Edit Article";
+      }
     }
 
     public async Task OnSaveArticleClicked()
@@ -39,7 +44,12 @@ namespace ServerlessCms.EditorApp.Pages
 
       await ArticleService.CreateArticle(Article);
 
-      NavigationManager.NavigateTo("articles", forceLoad: false);
+      NavigationManager.NavigateTo("articles");
+    }
+
+    public void OnDiscardClicked()
+    {
+      NavigationManager.NavigateTo("articles");
     }
   }
 }

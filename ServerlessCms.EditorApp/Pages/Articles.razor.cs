@@ -12,11 +12,18 @@ namespace ServerlessCms.EditorApp.Pages
   {
     [Inject]
     protected ArticleService ArticleService { get; set; }
+    [Inject]
+    protected NavigationManager NavigationManager { get; set; }
     private IEnumerable<Article> ArticleCollection { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
       ArticleCollection = await ArticleService.GetArticles();
+    }
+
+    private void OnEditButtonClick(string id)
+    {
+      NavigationManager.NavigateTo($"editarticle/{id}");
     }
 
   }
