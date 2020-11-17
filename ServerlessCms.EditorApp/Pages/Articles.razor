@@ -10,8 +10,16 @@
 }
 else
 {
-  foreach (var article in ArticleCollection)
-  {
-    <h3>@article.Title</h3> <button type="button" @onclick="() => { OnEditButtonClick(article.Id); }" class="btn-primary">Edit</button>
-  }
+  <div class="container">
+  @{ 
+      foreach (var article in ArticleCollection)
+      {
+        <div class="row">
+          <div class="col-sm-4">@article.Title</div> 
+          <div class="col-sm-2"><button type="button" @onclick="() => { OnEditButtonClick(article.Id); }" class="btn-primary">Edit</button></div>
+          <div class="col-sm-2"><button type="button" @onclick="async () => { await OnPublishButtonClick(article); }" class="btn-primary" disabled="@article.IsPublished">Publish</button></div>
+        </div>
+      }
+    }
+  </div>
 }

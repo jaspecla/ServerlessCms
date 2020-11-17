@@ -26,5 +26,11 @@ namespace ServerlessCms.EditorApp.Pages
       NavigationManager.NavigateTo($"editarticle/{id}");
     }
 
+    private async Task OnPublishButtonClick(Article article)
+    {
+      await ArticleService.PublishArticle(article);
+      NavigationManager.NavigateTo("articles", forceLoad: true);
+    }
+
   }
 }

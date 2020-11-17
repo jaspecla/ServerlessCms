@@ -54,5 +54,11 @@ namespace ServerlessCms.EditorApp.Services
       var updatedArticleResponse = await _httpClient.PostAsJsonAsync<Article>(uri, article);
     }
 
+    public async Task PublishArticle(Article article)
+    {
+      var uri = $"{_configuration["articleBaseUrl"]}api/PublishArticle";
+      var updatedArticleResponse = await _httpClient.PostAsJsonAsync<Article>(uri, article);
+    }
+
   }
 }
