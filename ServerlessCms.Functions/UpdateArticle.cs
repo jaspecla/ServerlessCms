@@ -10,6 +10,7 @@ using Newtonsoft.Json;
 using ServerlessCms.Data;
 using ServerlessCms.DTO;
 using System.Web.Http;
+using ServerlessCms.Functions.Auth;
 
 namespace ServerlessCms.Functions
 {
@@ -27,6 +28,12 @@ namespace ServerlessCms.Functions
             [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = null)] HttpRequest req,
             ILogger log)
     {
+      var isAuthorized = await HttpRequestAuthenticator.AuthenticateRequestForScope(req, "CMS.Articles.Edit", log);
+      if (!isAuthorized)
+      {
+        return new UnauthorizedResult();
+      }
+
       string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
 
       log.LogInformation($"Update article called with data: {requestBody}");

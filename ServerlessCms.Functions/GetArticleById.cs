@@ -10,6 +10,7 @@ using Newtonsoft.Json;
 using ServerlessCms.Data;
 using System.Web.Http;
 using ServerlessCms.DTO;
+using ServerlessCms.Functions.Auth;
 
 namespace ServelessCms.Functions
 {
@@ -27,6 +28,12 @@ namespace ServelessCms.Functions
         [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)] HttpRequest req,
         ILogger log)
     {
+      var isAuthorized = await HttpRequestAuthenticator.AuthenticateRequestForScope(req, "CMS.Articles.Read", log);
+      if (!isAuthorized)
+      {
+        return new UnauthorizedResult();
+      }
+
       string id = req.Query["id"];
 
       if (string.IsNullOrEmpty(id))
