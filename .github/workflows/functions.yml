@@ -51,3 +51,17 @@ jobs:
       with:         
         app-name: serverless-cms-dev
         package: './cms_functions'
+
+    - name: "Set Function App Service Settings"
+      uses: azure/appservice-settings@v1
+      with:
+        app-name: 'serverless-cms-dev'
+        app-settings-json: >-
+          [{"name": "AzureAdAudience", "value": "${{ secrets.AZURE_AD_AUDIENCE }}", "slotSetting": false},
+          {"name": "AzureAdClientId", "value": "${{ secrets.AZURE_AD_CLIENT_ID }}", "slotSetting": false},
+          {"name": "AzureAdTenant", "value": "${{ secrets.AZURE_AD_TENANT }}", "slotSetting": false},
+          {"name": "AzureAdTenantId", "value": "${{ secrets.AZURE_AD_TENANT_ID }}", "slotSetting": false},
+          {"name": "CosmosDbConnectionString", "value": "${{ secrets.COSMOS_DB_CONNECTION_STRING }}", "slotSetting": false}
+          ]
+      id: settings
+
