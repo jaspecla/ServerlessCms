@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Authorization;
 using ServerlessCms.DTO;
 using ServerlessCms.EditorApp.Services;
 using System;
@@ -14,6 +15,8 @@ namespace ServerlessCms.EditorApp.Pages
     protected ArticleService ArticleService { get; set; }
     [Inject]
     protected NavigationManager NavigationManager { get; set; }
+    [Inject]
+    protected AuthenticationStateProvider AuthenticationStateProvider { get; set; }
 
     public string PageTitle { get; set; } = "New Article";
     public Article Article { get; set; } = new Article();
@@ -27,6 +30,13 @@ namespace ServerlessCms.EditorApp.Pages
       {
         Article = await ArticleService.GetArticleById(Id);
         PageTitle = "Edit Article";
+      }
+      else
+      {
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+        Article.AuthorName = user.Identity.Name;
+        
       }
     }
 
