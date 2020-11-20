@@ -17,10 +17,12 @@ namespace ServelessCms.Functions
 {
   public class GetArticles
   {
-    public readonly CosmosArticleDb CmsDb;
+    private readonly CosmosArticleDb CmsDb;
+    private readonly HttpRequestAuthenticator Authenticator;
 
-    public GetArticles(CosmosArticleDb db)
+    public GetArticles(HttpRequestAuthenticator authenticator, CosmosArticleDb db)
     {
+      Authenticator = authenticator;
       CmsDb = db;
     }
 
@@ -29,12 +31,11 @@ namespace ServelessCms.Functions
         [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)] HttpRequest req,
         ILogger log)
     {
-      var isAuthorized = await HttpRequestAuthenticator.AuthenticateRequestForScope(req, "CMS.Articles.Read", log);
+      var isAuthorized = await Authenticator.AuthenticateRequestForScopeAndRole(req, "CMS.Articles.Read", "Articles.Read", log);
       if (!isAuthorized)
       {
         return new UnauthorizedResult();
       }
-
 
       log.LogInformation("Getting all articles.");
 

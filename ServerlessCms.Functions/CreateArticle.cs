@@ -21,10 +21,12 @@ namespace ServelessCms.Functions
   public class CreateArticle
   {
     private readonly CosmosArticleDb CmsDb;
+    private readonly HttpRequestAuthenticator Authenticator;
 
-    public CreateArticle(CosmosArticleDb db)
+    public CreateArticle(HttpRequestAuthenticator authenticator, CosmosArticleDb db)
     {
       CmsDb = db;
+      Authenticator = authenticator;
     }
 
     [FunctionName("CreateArticle")]
@@ -32,7 +34,7 @@ namespace ServelessCms.Functions
         [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = null)] HttpRequest req,
         ILogger log)
     {
-      var isAuthorized = await HttpRequestAuthenticator.AuthenticateRequestForScope(req, "CMS.Articles.Edit", log);
+      var isAuthorized = await Authenticator.AuthenticateRequestForScopeAndRole(req, "CMS.Articles.Edit", "Articles.Write", log);
       if (!isAuthorized)
       {
         return new UnauthorizedResult();
