@@ -19,7 +19,16 @@ namespace ServerlessCms.Functions.Auth
     public static async Task<bool> AuthenticateRequestForScope(HttpRequest req, string scope, ILogger log)
     {
       var accessToken = GetAccessToken(req);
+      if (accessToken == null)
+      {
+        return false;
+      }
+
       var claimsPrincipal = await ValidateAccessToken(accessToken, log);
+      if (claimsPrincipal == null)
+      {
+        return false;
+      }
 
       var scopeClaim = claimsPrincipal.FindFirst("http://schemas.microsoft.com/identity/claims/scope");
       if (scopeClaim == null)
