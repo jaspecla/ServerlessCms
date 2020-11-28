@@ -32,5 +32,11 @@ namespace ServerlessCms.EditorApp.Pages
       NavigationManager.NavigateTo("articles", forceLoad: true);
     }
 
+    private async Task OnDeleteButtonClick(Article article)
+    {
+      await ArticleService.DeleteArticle(article);
+      NavigationManager.NavigateTo("articles", forceLoad: true);
+    }
+
   }
 }

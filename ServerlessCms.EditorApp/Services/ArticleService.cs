@@ -78,5 +78,15 @@ namespace ServerlessCms.EditorApp.Services
       var updatedArticleResponse = await _httpClient.PostAsJsonAsync<Article>(uri, article);
     }
 
+    public async Task DeleteArticle(Article article)
+    {
+      var token = await _tokenService.GetToken();
+      _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token.Value);
+
+      var uri = $"{_configuration["articleBaseUrl"]}api/DeleteArticle";
+      var updatedArticleResponse = await _httpClient.PostAsJsonAsync<Article>(uri, article);
+
+    }
+
   }
 }
