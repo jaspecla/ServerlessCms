@@ -17,9 +17,9 @@ else
       {
         <div class="row">
           <div class="col-sm-4">@article.Title</div> 
-          <div class="col-sm-2"><button type="button" @onclick="() => { OnEditButtonClick(article.Id); }" class="btn-primary">Edit</button></div>
-          <div class="col-sm-2"><button type="button" @onclick="async () => { await OnPublishButtonClick(article); }" class="btn-primary" disabled="@article.IsPublished">Publish</button></div>
-          <div class="col-sm-2"><button type="button" @onclick="async() => { await OnDeleteButtonClick(article); }" class="btn-danger">Delete</button></div>
+          <div class="col-sm-1"><button type="button" @onclick="() => { OnEditButtonClick(article.Id); }" class="btn-primary">Edit</button></div>
+          <div class="col-sm-1"><button type="button" @onclick="async () => { await OnPublishButtonClick(article); }" class="btn-primary" disabled="@article.IsPublished">Publish</button></div>
+          <div class="col-sm-1"><button type="button" @onclick="async() => { await OnDeleteButtonClick(article); }" class="btn-danger">Delete</button></div>
         </div>
       }
     }

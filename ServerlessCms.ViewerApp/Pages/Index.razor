@@ -1,0 +1,22 @@
+﻿@page "/"
+
+<h1>The Serverless Times</h1>
+<h3>All The News That's Fit to Put on a Serverless Platform</h3>
+
+@if (ArticleCollection == null)
+{
+  <h3>Loading...</h3>
+}
+else
+{
+  <div class="container">
+    @{
+      foreach (var article in ArticleCollection)
+      {
+        <div class="row">
+          <div class="col-sm-4">@article.Title</div>
+        </div>
+      }
+    }
+  </div>
+}
