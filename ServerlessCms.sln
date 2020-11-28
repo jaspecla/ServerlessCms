@@ -11,6 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Deployment", "Deployment", 
 	ProjectSection(SolutionItems) = preProject
 		.github\workflows\editor-app.yml = .github\workflows\editor-app.yml
 		.github\workflows\functions.yml = .github\workflows\functions.yml
+		.github\workflows\viewer-app.yml = .github\workflows\viewer-app.yml
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerlessCms.DTO", "ServerlessCms.DTO\ServerlessCms.DTO.csproj", "{11842B87-9014-4829-91C9-4C6480852786}"

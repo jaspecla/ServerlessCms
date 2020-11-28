@@ -1,4 +1,4 @@
-name: Build and Deploy CMS Editor Blazor App
+name: Build and Deploy CMS Viewer Blazor App
 
 on:
   push:
@@ -6,19 +6,19 @@ on:
       - master
     paths:
       - 'ServerlessCms.DTO/**'
-      - 'ServerlessCms.EditorApp/**'
-      - '.github/workflows/editor-app.yml'
+      - 'ServerlessCms.ViewerApp/**'
+      - '.github/workflows/viewer-app.yml'
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches:
       - master
     paths:
       - 'ServerlessCms.DTO/**'
-      - 'ServerlessCms.EditorApp/**'
-      - '.github/workflows/editor-app.yml'
+      - 'ServerlessCms.ViewerApp/**'
+      - '.github/workflows/viewer-app.yml'
 
 env:
-  STATIC_WEB_APPS_API_TOKEN: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_NICE_PLANT_092ADE80F }}
+  STATIC_WEB_APPS_API_TOKEN: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_GRAY_ROCK_0D6847D0F }}
 
 jobs:
   build_and_deploy_job:
@@ -38,7 +38,7 @@ jobs:
           action: "upload"
           ###### Repository/Build Configurations - These values can be configured to match you app requirements. ######
           # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
-          app_location: "ServerlessCms.EditorApp" # App source code path
+          app_location: "ServerlessCms.ViewerApp" # App source code path
           output_location: "wwwroot" # Built app content directory - optional
           ###### End of Repository/Build Configurations ######
 
