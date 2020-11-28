@@ -1,7 +1,9 @@
 ﻿using Microsoft.Azure.Cosmos;
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;
+using Microsoft.Azure.WebJobs.Host.Bindings;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 using ServerlessCms.Data;
 using ServerlessCms.Functions.Auth;
 using System;
@@ -30,10 +32,12 @@ namespace ServerlessCms.Functions
 
       builder.Services.AddSingleton<HttpRequestAuthenticator>();
 
+      var executionContextOptions = builder.Services.BuildServiceProvider().GetService<IOptions<ExecutionContextOptions>>().Value;
+
       var config = new ConfigurationBuilder()
-        .SetBasePath(Directory.GetCurrentDirectory())
-        .AddJsonFile("appsettings.json", false)
+        .SetBasePath(executionContextOptions.AppDirectory)
         .AddEnvironmentVariables()
+        .AddJsonFile("appsettings.json", false)
         .Build();
 
       builder.Services.Configure<AzureAdOptions>(config.GetSection("AzureAd"));
