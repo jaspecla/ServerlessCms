@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -79,7 +80,16 @@ namespace ServerlessCms.Functions
       comment.IsPublished = true;
       comment.PublicationDate = DateTime.Now;
 
-      var comments = article.Comments.ToList();
+      List<Comment> comments;
+      if (article.Comments == null)
+      {
+        comments = new List<Comment>();
+      }
+      else
+      {
+        comments = article.Comments.ToList();
+      }
+
       comments.Add(comment);
       article.Comments = comments;
 

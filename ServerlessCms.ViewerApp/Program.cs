@@ -19,6 +19,7 @@ namespace ServerlessCms.ViewerApp
       builder.RootComponents.Add<App>("#app");
 
       builder.Services.AddScoped<PublishedArticleService>();
+      builder.Services.AddScoped<CommentService>();
       builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
       await builder.Build().RunAsync();

@@ -1,0 +1,27 @@
+﻿<h4>Comment on this article:</h4>
+<small class="text-muted">Note: All comments are moderated.</small>
+
+@if (!CommentWasPosted)
+{
+  <EditForm Model="@MyComment">
+    <label for="authorname" class="col-sm-2 col-form-label">
+      Your Name
+    </label>
+    <div class="col-sm-10">
+      <InputText id="authorname" class="form-control" @bind-Value="MyComment.Author" />
+    </div>
+    <label for="content" class="col-sm-2 col-form-label">
+      Your Comment
+    </label>
+    <div class="col-sm-10">
+      <InputTextArea id="content" class="form-control" @bind-Value="MyComment.Content" />
+    </div>
+  </EditForm>
+  <button type="submit" class="btn btn-primary" @onclick="OnPostCommentClicked">Post Comment</button>
+  <button type="button" class="btn btn-warning" @onclick="OnDiscardClicked">Discard</button>
+}
+else
+{
+  <p>Your comment was posted. It will not appear until it has been checked by our moderators.</p>
+  <button type="submit" class="btn btn-primary" @onclick="OnPostAnotherCommentClicked">Post Another Comment</button>
+}

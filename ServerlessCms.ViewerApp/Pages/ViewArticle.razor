@@ -18,5 +18,14 @@ else
     @MyArticle.Content
   </p>
 
+  @if (MyArticle.Comments != null && MyArticle.Comments.Count() > 0)
+  {
+  <h4>Comments:</h4>
+    @foreach (var comment in MyArticle.Comments)
+    {
+      <CommentView MyComment="@comment" />
+    }
+  }
+  <CommentEdit ParentArticleId="@MyArticle.Id" />
 }
 
