@@ -39,10 +39,20 @@ namespace ServerlessCms.Functions.Auth
         return false;
       }
 
-      return (
-        ValidateValueInClaim(claimsPrincipal, "http://schemas.microsoft.com/identity/claims/scope", scope) &&
-        ValidateValueInClaim(claimsPrincipal, "http://schemas.microsoft.com/ws/2008/06/identity/claims/role", role)
-        );
+      if (!ValidateValueInClaim(claimsPrincipal, "http://schemas.microsoft.com/identity/claims/scope", scope))
+      {
+        log.LogError($"Scope {scope} not found for calling application.");
+        return false;
+      }
+
+      if (!ValidateValueInClaim(claimsPrincipal, "http://schemas.microsoft.com/ws/2008/06/identity/claims/role", role))
+      {
+        log.LogError($"User {claimsPrincipal.Identity.Name} not authorized for role {role}.");
+        return false;
+      }
+
+      log.LogInformation($"Scope and role claims are valid for user {claimsPrincipal.Identity.Name}.");
+      return true;
 
     }
 
