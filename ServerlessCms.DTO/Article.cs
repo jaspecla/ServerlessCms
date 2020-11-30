@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ServerlessCms.DTO
 {
@@ -13,5 +14,6 @@ namespace ServerlessCms.DTO
     public string Subtitle { get; set; }
     public string AuthorName { get; set; }
     public string Content { get; set; }
+    public IEnumerable<Comment> Comments { get; set; }
   }
 }
