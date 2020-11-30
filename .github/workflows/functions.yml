@@ -57,11 +57,11 @@ jobs:
       with:
         app-name: 'serverless-cms-dev'
         app-settings-json: >-
-          [{"name": "AzureAdAudience", "value": "${{ secrets.AZURE_AD_AUDIENCE }}", "slotSetting": false},
-          {"name": "AzureAdClientId", "value": "${{ secrets.AZURE_AD_CLIENT_ID }}", "slotSetting": false},
-          {"name": "AzureAdTenant", "value": "${{ secrets.AZURE_AD_TENANT }}", "slotSetting": false},
-          {"name": "AzureAdTenantId", "value": "${{ secrets.AZURE_AD_TENANT_ID }}", "slotSetting": false},
-          {"name": "CosmosDbConnectionString", "value": "${{ secrets.COSMOS_DB_CONNECTION_STRING }}", "slotSetting": false}
+          {"name": "CosmosDbConnectionString", "value": "${{ secrets.COSMOS_DB_CONNECTION_STRING }}", "slotSetting": false},
+          {"name": "ServiceBusConnectionString", "value": "${{ secrets.SERVICE_BUS_CONNECTION_STRING }}", "slotSetting": false},
+          {"name": "ContentModerationQueueName", "value": "${{ secrets.CONTENT_MODERATION_QUEUE_NAME }}", "slotSetting": false},
+          {"name": "ContentModeratorSubscriptionKey", "value": "${{ secrets.CONTENT_MODERATOR_SUBSCRIPTION_KEY }}", "slotSetting": false},
+          {"name": "ContentModeratorEndpoint", "value": "${{ secrets.CONTENT_MODERATOR_ENDPOINT }}", "slotSetting": false}
           ]
       id: settings
 
