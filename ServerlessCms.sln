@@ -18,7 +18,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerlessCms.DTO", "Server
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerlessCms.EditorApp", "ServerlessCms.EditorApp\ServerlessCms.EditorApp.csproj", "{EDFDD198-AB00-439D-8D6A-D4D72E5C7844}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerlessCms.ViewerApp", "ServerlessCms.ViewerApp\ServerlessCms.ViewerApp.csproj", "{5D143C3B-A7CC-4484-8201-F2D72D962E81}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerlessCms.ViewerApp", "ServerlessCms.ViewerApp\ServerlessCms.ViewerApp.csproj", "{5D143C3B-A7CC-4484-8201-F2D72D962E81}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

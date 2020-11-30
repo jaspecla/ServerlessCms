@@ -1,0 +1,22 @@
+﻿@page "/article/{id}"
+
+@if (MyArticle == null)
+{
+  <h3>Loading...</h3>
+}
+else
+{
+  <h3>@MyArticle.Title</h3>
+  @if (!string.IsNullOrEmpty(MyArticle.Subtitle))
+  {
+    <h4>@MyArticle.Subtitle</h4>
+  }
+  <h4>by @MyArticle.AuthorName</h4>
+  <p>@MyArticle.PublicationDate.ToLongDateString()</p>
+
+  <p>
+    @MyArticle.Content
+  </p>
+
+}
+

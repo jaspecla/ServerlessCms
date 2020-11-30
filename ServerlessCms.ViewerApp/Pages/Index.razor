@@ -14,7 +14,7 @@ else
       foreach (var article in ArticleCollection)
       {
         <div class="row">
-          <div class="col-sm-4">@article.Title</div>
+          <ArticleHeadline MyArticle="@article" />
         </div>
       }
     }

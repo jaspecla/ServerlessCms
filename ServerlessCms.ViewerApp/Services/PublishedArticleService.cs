@@ -36,6 +36,15 @@ namespace ServerlessCms.ViewerApp.Services
       return articles;
     }
 
+    public async Task<Article> GetPublishedArticleById(string id)
+    {
+      var uri = $"{_configuration["articleBaseUrl"]}api/GetPublishedArticleById?id={id}";
+      var article = await _httpClient.GetFromJsonAsync<Article>(uri);
+
+      return article;
+
+    }
+
 
   }
 }
