@@ -57,6 +57,7 @@ jobs:
       with:
         app-name: 'serverless-cms-dev'
         app-settings-json: >-
+          [
           {"name": "CosmosDbConnectionString", "value": "${{ secrets.COSMOS_DB_CONNECTION_STRING }}", "slotSetting": false},
           {"name": "ServiceBusConnectionString", "value": "${{ secrets.SERVICE_BUS_CONNECTION_STRING }}", "slotSetting": false},
           {"name": "ContentModerationQueueName", "value": "${{ secrets.CONTENT_MODERATION_QUEUE_NAME }}", "slotSetting": false},
