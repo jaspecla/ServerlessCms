@@ -30,12 +30,14 @@ namespace ServerlessCms.Functions.Auth
       var accessToken = GetAccessToken(req);
       if (accessToken == null)
       {
+        log.LogError("Could not get access token from request.");
         return false;
       }
 
       var claimsPrincipal = await ValidateAccessToken(accessToken, log);
       if (claimsPrincipal == null)
       {
+        log.LogError("Could not validate access token to get claims principal.");
         return false;
       }
 
