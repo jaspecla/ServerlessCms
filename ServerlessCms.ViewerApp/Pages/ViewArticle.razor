@@ -15,7 +15,7 @@ else
   <p>@MyArticle.PublicationDate.ToLongDateString()</p>
 
   <p>
-    @MyArticle.Content
+    @((MarkupString)MyArticle.Content)
   </p>
 
   @if (MyArticle.Comments != null && MyArticle.Comments.Count() > 0)
