@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Components.Authorization;
 using ServerlessCms.DTO;
 using ServerlessCms.EditorApp.Services;
+using ServerlessCms.EditorApp.Shared;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,8 @@ namespace ServerlessCms.EditorApp.Pages
 
     public string PageTitle { get; set; } = "New Article";
     public Article Article { get; set; } = new Article();
+
+    protected RichTextEditor RichTextEditor;
 
     [Parameter]
     public string Id { get; set; }
@@ -42,6 +45,9 @@ namespace ServerlessCms.EditorApp.Pages
 
     public async Task OnSaveArticleClicked()
     {
+
+      Article.Content = await RichTextEditor.GetContentAsync();
+
       if (string.IsNullOrEmpty(Article.Id))
       {
         Article.Id = Guid.NewGuid().ToString();
