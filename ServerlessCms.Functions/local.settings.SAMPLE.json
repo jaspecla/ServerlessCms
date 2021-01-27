@@ -4,10 +4,7 @@
     "AzureWebJobsStorage": "UseDevelopmentStorage=true",
     "FUNCTIONS_WORKER_RUNTIME": "dotnet",
     "CosmosDbConnectionString": "<connection string for Cosmos DB local emulator or development Cosmos DB instance>",
-    "AzureAdAudience": "<the Application ID URI from Azure AD, ex: api://feff4b9c-2a58-4a8f-b729-1164b0bdff37>",
-    "AzureAdClientId": "<client ID of your Azure AD application ex: feff4b9c-2a58-4a8f-b729-1164b0bdff37>",
-    "AzureAdTenant": "<domain of your Azure AD tenant, ex: contoso.com>",
-    "AzureAdTenantId": "<ID of yhour Azure AD tneant, ex: 6c8a9780-aaa0-4d71-8fac-99af8954737e>"
+    "ServiceBusConnectionString": "<connection string for Service Bus queue for comment moderation>"
   },
   "Host": {
     "CORS": "*"
