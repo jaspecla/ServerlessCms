@@ -4,7 +4,10 @@
     "AzureWebJobsStorage": "UseDevelopmentStorage=true",
     "FUNCTIONS_WORKER_RUNTIME": "dotnet",
     "CosmosDbConnectionString": "<connection string for Cosmos DB local emulator or development Cosmos DB instance>",
-    "ServiceBusConnectionString": "<connection string for Service Bus queue for comment moderation>"
+    "ServiceBusConnectionString": "<connection string for Service Bus used for comment moderation>",
+    "ContentModerationQueueName": "<the name of the specific queue in the Service Bus used for comment moderation>",
+    "ContentModeratorSubscriptionKey": "<the subscription key for Azure Cognitive Services content moderator>",
+    "ContentModeratorEndpoint": "<the Azure Cognitive Services content moderator endpoint url>"
   },
   "Host": {
     "CORS": "*"
