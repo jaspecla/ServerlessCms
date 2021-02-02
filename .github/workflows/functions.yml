@@ -62,7 +62,10 @@ jobs:
           {"name": "ServiceBusConnectionString", "value": "${{ secrets.SERVICE_BUS_CONNECTION_STRING }}", "slotSetting": false},
           {"name": "ContentModerationQueueName", "value": "${{ secrets.CONTENT_MODERATION_QUEUE_NAME }}", "slotSetting": false},
           {"name": "ContentModeratorSubscriptionKey", "value": "${{ secrets.CONTENT_MODERATOR_SUBSCRIPTION_KEY }}", "slotSetting": false},
-          {"name": "ContentModeratorEndpoint", "value": "${{ secrets.CONTENT_MODERATOR_ENDPOINT }}", "slotSetting": false}
+          {"name": "ContentModeratorEndpoint", "value": "${{ secrets.CONTENT_MODERATOR_ENDPOINT }}", "slotSetting": false},
+          {"name": "ImageStorageAccountName", "value": "${{ secrets.IMAGE_STORAGE_ACCOUNT_NAME }}", "slotSetting": false},
+          {"name": "ImageStorageAccountKey", "value": "${{ secrets.IMAGE_STORAGE_ACCOUNT_KEY }}", "slotSetting": false},
+          {"name": "ImageStorageBlobContainerName", "value": "${{ secrets.IMAGE_STORAGE_BLOB_CONTAINER_NAME }}", "slotSetting": false}
           ]
       id: settings
 

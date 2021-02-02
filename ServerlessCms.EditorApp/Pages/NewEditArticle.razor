@@ -25,10 +25,8 @@
   <label for="content" class="col-sm-2 col-form-label">
     Article Content
   </label>
-  @*<div class="col-sm-10">
-    <InputTextArea id="content" class="form-control" @bind-Value="Article.Content" />
-  </div>*@
 </EditForm>
 <RichTextEditor @ref="@RichTextEditor" Content="@Article.Content" />
+<InputFile OnChange="@OnUploadImageChanged" />
 <button type="submit" class="btn btn-primary" @onclick="OnSaveArticleClicked">Save</button>
 <button type="button" class="btn btn-warning" @onclick="OnDiscardClicked">Discard</button>

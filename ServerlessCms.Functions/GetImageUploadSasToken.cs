@@ -13,6 +13,7 @@ using Azure.Identity;
 using ServerlessCms.Data;
 using Azure.Storage.Sas;
 using Azure.Storage.Blobs.Models;
+using Azure.Storage;
 
 namespace ServerlessCms.Functions
 {
@@ -63,42 +64,29 @@ namespace ServerlessCms.Functions
       log.LogInformation($"Getting SAS token for image upload {fileName} to article {articleId}.");
 
       var storageAccountName = Environment.GetEnvironmentVariable("ImageStorageAccountName");
-      var blobEndpoint = $"https://{storageAccountName}.blob.core.windows.net";
+      var storageAccountKey = Environment.GetEnvironmentVariable("ImageStorageAccountKey");
+      var imagesContainerName = Environment.GetEnvironmentVariable("ImageStorageBlobContainerName");
 
-      var accountClient = new BlobServiceClient(new Uri(blobEndpoint), new DefaultAzureCredential());
+      var filePath = $"{articleId}/{fileName}";
 
+      var blobEndpoint = $"https://{storageAccountName}.blob.core.windows.net/{imagesContainerName}/{filePath}";
 
-      UserDelegationKey userDelegationKey = null;
+      var storageCredential = new StorageSharedKeyCredential(storageAccountName, storageAccountKey);
+      var blobClient = new BlobClient(new Uri(blobEndpoint), storageCredential);
 
-      try
-      {
-        userDelegationKey = await accountClient.GetUserDelegationKeyAsync(DateTimeOffset.UtcNow, DateTimeOffset.UtcNow.AddMinutes(30));
-      }
-      catch (Exception ex)
-      {
-        log.LogError(ex.Message);
-        throw;
-      }
+      var sasBuilder = new BlobSasBuilder(BlobSasPermissions.Write | BlobSasPermissions.Create, 
+        DateTimeOffset.UtcNow.AddMinutes(30));
 
-      var sasBuilder = new BlobSasBuilder()
-      {
-        BlobContainerName = Environment.GetEnvironmentVariable("ImageStorageBlobContainerName"),
-        BlobName = $"{articleId}/{fileName}",
-        Resource = "b",
-        StartsOn = DateTimeOffset.UtcNow,
-        ExpiresOn = DateTimeOffset.UtcNow.AddMinutes(30)
-      };
+      sasBuilder.BlobContainerName = blobClient.BlobContainerName;
+      sasBuilder.BlobName = filePath;
+      sasBuilder.Resource = "b";
+      sasBuilder.StartsOn = DateTimeOffset.UtcNow.AddMinutes(-5);
 
-      sasBuilder.SetPermissions(BlobSasPermissions.Read | BlobSasPermissions.Write);
-
-      var blobUriBuilder = new BlobUriBuilder(accountClient.Uri)
-      {
-        Sas = sasBuilder.ToSasQueryParameters(userDelegationKey, accountClient.AccountName)
-      };
+      var blobUri = blobClient.GenerateSasUri(sasBuilder);
 
       log.LogInformation($"Successfully created SAS token for image upload {fileName} to article {articleId}");
 
-      return new OkObjectResult(blobUriBuilder.ToString());
+      return new OkObjectResult(blobUri.ToString());
     }
   }
 }

@@ -21,6 +21,7 @@ namespace ServerlessCms.EditorApp
       builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
       builder.Services.AddScoped<ArticleService>();
       builder.Services.AddScoped<TokenService>();
+      builder.Services.AddScoped<ImageService>();
 
       builder.Services.AddMsalAuthentication(options =>
       {

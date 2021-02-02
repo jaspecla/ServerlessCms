@@ -9,6 +9,7 @@
     "ContentModeratorSubscriptionKey": "<the subscription key for Azure Cognitive Services content moderator>",
     "ContentModeratorEndpoint": "<the Azure Cognitive Services content moderator endpoint url>",
     "ImageStorageAccountName": "<the name of the Storage Account used for image storage>",
+    "ImageStorageAccountKey": "<the Access Key for the Storage Account used for image storage>",
     "ImageStorageBlobContainerName": "<the name of the blob container used for image storage>"
   },
   "Host": {

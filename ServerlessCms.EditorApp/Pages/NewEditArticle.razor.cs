@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.AspNetCore.Components.Forms;
 using ServerlessCms.DTO;
 using ServerlessCms.EditorApp.Services;
 using ServerlessCms.EditorApp.Shared;
@@ -18,6 +19,8 @@ namespace ServerlessCms.EditorApp.Pages
     protected NavigationManager NavigationManager { get; set; }
     [Inject]
     protected AuthenticationStateProvider AuthenticationStateProvider { get; set; }
+    [Inject]
+    protected ImageService ImageService { get; set; }
 
     public string PageTitle { get; set; } = "New Article";
     public Article Article { get; set; } = new Article();
@@ -43,7 +46,16 @@ namespace ServerlessCms.EditorApp.Pages
       }
     }
 
-    public async Task OnSaveArticleClicked()
+    private async Task OnUploadImageChanged(InputFileChangeEventArgs eventArgs)
+    {
+      var file = eventArgs.File;
+
+      // TODO: Ensure article ID is not null yet
+      var sasUri = await ImageService.GetSasUriForImage(Article.Id, file.Name);
+      await ImageService.UploadImageWithSasUri(file.OpenReadStream(file.Size), sasUri);
+    }
+
+    private async Task OnSaveArticleClicked()
     {
 
       Article.Content = await RichTextEditor.GetContentAsync();
@@ -65,7 +77,7 @@ namespace ServerlessCms.EditorApp.Pages
       NavigationManager.NavigateTo("articles");
     }
 
-    public void OnDiscardClicked()
+    private void OnDiscardClicked()
     {
       NavigationManager.NavigateTo("articles");
     }
