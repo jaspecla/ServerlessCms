@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30615.102
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32611.2
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerlessCms.Functions", "ServerlessCms.Functions\ServerlessCms.Functions.csproj", "{426ACB7B-0CED-463A-8348-41B46A3B6B7D}"
 EndProject
@@ -14,11 +14,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Deployment", "Deployment", 
 		.github\workflows\viewer-app.yml = .github\workflows\viewer-app.yml
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerlessCms.DTO", "ServerlessCms.DTO\ServerlessCms.DTO.csproj", "{11842B87-9014-4829-91C9-4C6480852786}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerlessCms.EditorApp", "ServerlessCms.EditorApp\ServerlessCms.EditorApp.csproj", "{EDFDD198-AB00-439D-8D6A-D4D72E5C7844}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerlessCms.ViewerApp", "ServerlessCms.ViewerApp\ServerlessCms.ViewerApp.csproj", "{5D143C3B-A7CC-4484-8201-F2D72D962E81}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerlessCms.Dto", "ServerlessCms.Dto\ServerlessCms.Dto.csproj", "{C57908EA-6BD9-4682-B86C-5A31ACBDDB7C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,10 +34,6 @@ Global
 		{BB0B91E3-920F-463B-8A2E-DD343121C9F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB0B91E3-920F-463B-8A2E-DD343121C9F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB0B91E3-920F-463B-8A2E-DD343121C9F5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{11842B87-9014-4829-91C9-4C6480852786}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{11842B87-9014-4829-91C9-4C6480852786}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{11842B87-9014-4829-91C9-4C6480852786}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{11842B87-9014-4829-91C9-4C6480852786}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EDFDD198-AB00-439D-8D6A-D4D72E5C7844}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EDFDD198-AB00-439D-8D6A-D4D72E5C7844}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EDFDD198-AB00-439D-8D6A-D4D72E5C7844}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -46,6 +42,10 @@ Global
 		{5D143C3B-A7CC-4484-8201-F2D72D962E81}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D143C3B-A7CC-4484-8201-F2D72D962E81}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D143C3B-A7CC-4484-8201-F2D72D962E81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C57908EA-6BD9-4682-B86C-5A31ACBDDB7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C57908EA-6BD9-4682-B86C-5A31ACBDDB7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C57908EA-6BD9-4682-B86C-5A31ACBDDB7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C57908EA-6BD9-4682-B86C-5A31ACBDDB7C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
