@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -11,27 +12,29 @@ using System.Threading.Tasks;
 
 namespace ServerlessCms.EditorApp
 {
-  public class Program
-  {
-    public static async Task Main(string[] args)
+    public class Program
     {
-      var builder = WebAssemblyHostBuilder.CreateDefault(args);
-      builder.RootComponents.Add<App>("#app");
+        public static async Task Main(string[] args)
+        {
+            var builder = WebAssemblyHostBuilder.CreateDefault(args);
+            builder.RootComponents.Add<App>("#app");
+            builder.RootComponents.Add<HeadOutlet>("head::after");
 
-      builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
-      builder.Services.AddScoped<ArticleService>();
-      builder.Services.AddScoped<TokenService>();
-      builder.Services.AddScoped<ImageService>();
 
-      builder.Services.AddMsalAuthentication(options =>
-      {
-        builder.Configuration.Bind("AzureAd", options.ProviderOptions.Authentication);
-        options.ProviderOptions.DefaultAccessTokenScopes
-          .Add("https://graph.microsoft.com/User.Read");
+            builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+            builder.Services.AddScoped<ArticleService>();
+            builder.Services.AddScoped<TokenService>();
+            builder.Services.AddScoped<ImageService>();
 
-      });
+            builder.Services.AddMsalAuthentication(options =>
+            {
+                builder.Configuration.Bind("AzureAd", options.ProviderOptions.Authentication);
+                options.ProviderOptions.DefaultAccessTokenScopes
+            .Add("https://graph.microsoft.com/User.Read");
 
-      await builder.Build().RunAsync();
+            });
+
+            await builder.Build().RunAsync();
+        }
     }
-  }
 }
