@@ -4,7 +4,7 @@ on:
   push:
     branches: [ master ]
     paths:
-      - 'ServerlessCms.DTO/**'
+      - 'ServerlessCms.Dto/**'
       - 'ServerlessCms.Functions/**'
       - 'ServerlessCms.Data/**'
       - '.github/workflows/functions.yml'
@@ -12,7 +12,7 @@ on:
   pull_request:
     branches: [ master ]
     paths:
-      - 'ServerlessCms.DTO/**'
+      - 'ServerlessCms.Dto/**'
       - 'ServerlessCms.Functions/**'
       - 'ServerlessCms.Data/**'
       - '.github/workflows/functions.yml'
@@ -26,12 +26,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 6.0.301
-    - name: Show Dir
-      run: dir
     - name: Install dependencies
       run: dotnet restore ${{ env.FUNCTIONS_PROJECT_PATH }}
     - name: Build
