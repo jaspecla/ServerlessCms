@@ -8,7 +8,7 @@
     <Compile Remove="TestFunction.cs" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Azure.Identity" Version="1.6.0" />
+    <PackageReference Include="Azure.Identity" Version="1.10.2" />
     <PackageReference Include="Azure.Messaging.ServiceBus" Version="7.9.0" />
     <PackageReference Include="Azure.Storage.Blobs" Version="12.13.0" />
     <PackageReference Include="Microsoft.Azure.CognitiveServices.ContentModerator" Version="2.0.0" />
